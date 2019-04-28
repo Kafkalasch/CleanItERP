@@ -1,0 +1,14 @@
+{
+    "files.exclude": {
+        "CleanItERP/obj": true,
+        "CleanItERP/bin": true,
+        "CleanItERP/ClientApp/build": true,
+        "CleanItERP/ClientApp/node_modules": true,
+        "CleanItERPTests/obj": true,
+        "CleanItERPTests/bin": true,
+    },
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "jest.showCoverageOnLoad": true
+}
