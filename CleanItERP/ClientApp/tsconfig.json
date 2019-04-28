@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "outDir": "./build/",
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "forceConsistentCasingInFileNames": true,
+        "strictBindCallApply": true,
+        "strictFunctionTypes": true,
+        "target": "es5",
+        "jsx": "react",
+        "sourceMap": true,
+        "baseUrl": "./",
+        "lib": ["es2018", "dom"],
+        "paths": {
+            "src/*": ["./src/*"]
+        }
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "compileOnSave": true
+}
