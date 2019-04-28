@@ -9,6 +9,6 @@ namespace CleanItERP.Model
 
         public Order Order { get; set; }
         public TextileType TextileType { get; set; }
-        public TextileStatus TextileStatus { get; set; }
+        public TextileState TextileStatus { get; set; }
     }
 }
