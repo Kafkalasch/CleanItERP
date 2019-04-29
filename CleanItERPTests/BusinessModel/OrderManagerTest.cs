@@ -9,7 +9,7 @@ namespace CleanItERPTests.BusinessModel
     public class OrderManagerTest : ADbContextTest
     {
         [Fact]
-        public void OrderManagerReturnsEmptyEnumerableWhenDatabaseIsEmpty()
+        public void GetOrdersReturnsEmptyEnumerableWhenDatabaseIsEmpty()
         {
             using (var context = CreateContext())
             {
@@ -20,7 +20,7 @@ namespace CleanItERPTests.BusinessModel
         }
 
         [Fact]
-        public void OrderManagerReturnsAllOrdersThatAreSavedInDatabase()
+        public void GetOrdersReturnsAllOrdersThatAreSavedInDatabase()
         {
             var order1Identifier = "Order 1";
             var order2Identifier = "Order 2";

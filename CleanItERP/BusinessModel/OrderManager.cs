@@ -3,7 +3,7 @@ using CleanItERP.DataModel;
 
 namespace CleanItERP.BusinessModel
 {
-    public class OrderManager
+    public class OrderManager : IOrderManager
     {
         private CleanItERPContext Context { get; }
 
