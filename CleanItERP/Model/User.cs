@@ -1,9 +1,13 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
 namespace CleanItERP.Model
 {
     public class User
     {
         public int Id { get; set; }
+
+        [Required]
         public string Name { get; set; }
         public int UserRoleId { get; set; }
 

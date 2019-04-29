@@ -24,6 +24,19 @@ namespace CleanItERPTests.Model
 
             userRole.Users.Should().Contain(user);
         }
+
+        [Fact]
+        public void SavingWithoutDescriptionThrows()
+        {
+            var role = EntityFactory.CreateUserRole();
+            role.Description = null;
+
+            using (var context = CreateContext())
+            {
+                context.Add(role);
+                SavingContextShouldThrowNotNullConstrainedFailedException(context);
+            }
+        }
         
     }
 }

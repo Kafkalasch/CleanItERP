@@ -55,5 +55,30 @@ namespace CleanItERPTests.Model
             employee.Orders.Should().Contain(order);
         }
 
+        [Fact]
+        public void SavingWithoutFirstNameThrows()
+        {
+            var employee = EntityFactory.CreateEmployee();
+            employee.FirstName = null;
+
+            using (var context = CreateContext())
+            {
+                context.Add(employee);
+                SavingContextShouldThrowNotNullConstrainedFailedException(context);
+            }
+        }
+
+        [Fact]
+        public void SavingWithoutLastNameThrows()
+        {
+            var employee = EntityFactory.CreateEmployee();
+            employee.LastName = null;
+
+            using (var context = CreateContext())
+            {
+                context.Add(employee);
+                SavingContextShouldThrowNotNullConstrainedFailedException(context);
+            }
+        }
     }
 }

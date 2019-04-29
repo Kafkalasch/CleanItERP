@@ -69,5 +69,17 @@ namespace CleanItERPTests.Model
             user.Customers.Should().Contain(customer);
         }
         
+        [Fact]
+        public void SavingWithoutNameThrows()
+        {
+            var user = EntityFactory.CreateUser();
+            user.Name = null;
+
+            using (var context = CreateContext())
+            {
+                context.Add(user);
+                SavingContextShouldThrowNotNullConstrainedFailedException(context);
+            }
+        }
     }
 }

@@ -1,9 +1,12 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace CleanItERP.Model
 {
     public class Textile
     {
         public int Id { get; set; }
 
+        [Required]
         public string Identifier {get; set;}
         public int OrderId { get; set; }
         public int TextileTypeId { get; set; }

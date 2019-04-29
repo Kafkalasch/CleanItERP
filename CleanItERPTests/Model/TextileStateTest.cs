@@ -29,6 +29,19 @@ namespace CleanItERPTests.Model
 
             state.Textiles.Should().Contain(textile);
         }
+
+        [Fact]
+        public void SavingWithoutDescriptionThrows()
+        {
+            var state = EntityFactory.CreateTextileState();
+            state.Description = null;
+
+            using (var context = CreateContext())
+            {
+                context.Add(state);
+                SavingContextShouldThrowNotNullConstrainedFailedException(context);
+            }
+        }
         
     }
 }

@@ -8,7 +8,8 @@ namespace CleanItERPTests.Model
     public class TextileTypeTest : AModelTest
     {
         [Fact]
-        public void TestTextileReverseNavigationOfTextileType(){
+        public void TestTextileReverseNavigationOfTextileType()
+        {
             var type = EntityFactory.CreateTextileType();
             var state = EntityFactory.CreateTextileState();
             var order = EntityFactory.CreateOrder();
@@ -31,15 +32,17 @@ namespace CleanItERPTests.Model
         }
 
         [Fact]
-        public void SavingTextileTypeWithoutDescriptionThrows(){
+        public void SavingWithoutDescriptionThrows()
+        {
             var type = EntityFactory.CreateTextileType();
             type.Description = null;
 
-            using(var context = CreateContext()){
+            using (var context = CreateContext())
+            {
                 context.Add(type);
                 SavingContextShouldThrowNotNullConstrainedFailedException(context);
             }
         }
-        
+
     }
 }

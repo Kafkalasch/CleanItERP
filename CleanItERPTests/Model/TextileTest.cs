@@ -83,5 +83,18 @@ namespace CleanItERPTests.Model
             textile.OrderId.Should().Be(order.Id);
         }
 
+        [Fact]
+        public void SavingWithoutIdentifierThrows()
+        {
+            var textile = EntityFactory.CreateTextile();
+            textile.Identifier = null;
+
+            using (var context = CreateContext())
+            {
+                context.Add(textile);
+                SavingContextShouldThrowNotNullConstrainedFailedException(context);
+            }
+        }
+
     }
 }

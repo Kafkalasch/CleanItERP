@@ -10,7 +10,6 @@ namespace CleanItERP.Model
         [Required]
         public string Description { get; set; }
 
-        [Required]
         public decimal Price { get; set; }
 
         public ICollection<Textile> Textiles { get; set; }
