@@ -5,6 +5,7 @@ namespace CleanItERP.Model
     public class Order
     {
         public int Id {get; set;}
+        public string Identifier {get; set;}
         public int BranchId {get; set;}
         public int CustomerId {get; set;}
         public int ClerkId {get; set; }
