@@ -1,3 +1,4 @@
+using CleanItERP.BusinessModel;
 using CleanItERP.DataModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -43,8 +44,10 @@ namespace CleanItERP
             });
 
             services.AddDbContext<CleanItERPContext>(
-                options => options.UseSqlite("DataSource=:memory:")
+                options => options.UseSqlite("DataSource=:memory:?cache=shared")
             );
+
+            services.AddScoped<IOrderManager, OrderManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,6 +79,7 @@ namespace CleanItERP
                     spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
                 }
             });
+
         }
     }
 }

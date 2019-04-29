@@ -45,7 +45,7 @@ namespace CleanItERP
         }
         public void Seed()
         {
-            Context.Database.EnsureCreated();
+            var created = Context.Database.EnsureCreated();
 
             CreateUserRoles();
             CreateUsers();
