@@ -4,7 +4,7 @@ using FluentAssertions;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
-namespace CleanItERPTests.DataModel
+namespace CleanItERPTests
 {
     public abstract class ADbContextTest : IDisposable
     {
