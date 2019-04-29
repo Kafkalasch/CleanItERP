@@ -1,5 +1,6 @@
 using System;
 using CleanItERP.Model;
+using FluentAssertions;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,6 +33,11 @@ namespace CleanItERPTests.Model
 
         protected CleanItERPContext CreateContext() => new CleanItERPContext(ContextOptions);
 
-
+        protected void SavingContextShouldThrowNotNullConstrainedFailedException(CleanItERPContext context){
+            context.Invoking(c => c.SaveChanges())
+                    .Should().Throw<Microsoft.EntityFrameworkCore.DbUpdateException>()
+                    .WithInnerException<Microsoft.Data.Sqlite.SqliteException>()
+                    .WithMessage("SQLite Error 19: 'NOT NULL constraint failed:*");
+        }
     }
 }
