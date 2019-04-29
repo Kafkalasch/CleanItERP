@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace CleanItERP.Model
 {
     public class Employee
@@ -11,5 +13,7 @@ namespace CleanItERP.Model
         // We can add additional information like position, contact details, employed since, etc., if required.
 
         public User User { get; set; }
+        public ICollection<Order> Orders { get; set; }
+
     }
 }

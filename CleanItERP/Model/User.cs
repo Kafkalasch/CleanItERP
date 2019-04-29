@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 namespace CleanItERP.Model
 {
     public class User
@@ -7,5 +8,7 @@ namespace CleanItERP.Model
         public int UserRoleId { get; set; }
 
         public UserRole UserRole { get; set; }
+        public ICollection<Employee> Employees {get; set;}
+        public ICollection<Customer> Customers {get; set;}
     }
 }

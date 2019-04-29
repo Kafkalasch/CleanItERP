@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace CleanItERP.Model
 {
@@ -15,5 +16,7 @@ namespace CleanItERP.Model
         public Branch Branch {get; set;}
         public Customer Customer {get; set;}
         public Employee Clerk {get; set;}
+        public ICollection<Textile> Textiles { get; set; }
+
     }
 }

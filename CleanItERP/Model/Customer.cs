@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace CleanItERP.Model
 {
     public class Customer
@@ -11,6 +13,6 @@ namespace CleanItERP.Model
         // We can add additional information like address, contact details, etc., if required.
 
         public User User { get; set; }
-        
+        public ICollection<Order> Orders { get; set; }
     }
 }
