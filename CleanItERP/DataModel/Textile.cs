@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CleanItERP.Model
+namespace CleanItERP.DataModel
 {
     public class Textile
     {

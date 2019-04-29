@@ -1,4 +1,4 @@
-using CleanItERP.Model;
+using CleanItERP.DataModel;
 using FluentAssertions;
 using Xunit;
 

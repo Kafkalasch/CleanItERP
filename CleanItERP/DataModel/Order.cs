@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace CleanItERP.Model
+namespace CleanItERP.DataModel
 {
     public class Order
     {

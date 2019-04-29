@@ -1,6 +1,6 @@
 using System.Data;
 using System;
-using CleanItERP.Model;
+using CleanItERP.DataModel;
 using FluentAssertions;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;

@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace CleanItERP.Model
+namespace CleanItERP.DataModel
 {
-    public class Employee
+    public class Customer
     {
-        public int Id {get; set;}
-        public int SocialSecurityNumber {get; set;}
+        public int Id { get; set; }
+        public int MemberShipId { get; set; }
         public int UserId { get; set; }
 
         [Required]
@@ -15,10 +15,9 @@ namespace CleanItERP.Model
         [Required]
         public string LastName { get; set; }
 
-        // We can add additional information like position, contact details, employed since, etc., if required.
+        // We can add additional information like address, contact details, etc., if required.
 
         public User User { get; set; }
         public ICollection<Order> Orders { get; set; }
-
     }
 }

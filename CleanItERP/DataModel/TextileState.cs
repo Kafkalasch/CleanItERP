@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace CleanItERP.Model
+namespace CleanItERP.DataModel
 {
-    public class UserRole
+    public class TextileState
     {
         public int Id { get; set; }
 
         [Required]
         public string Description { get; set; }
-        public ICollection<User> Users { get; set; }
+
+        public ICollection<Textile> Textiles { get; set; }
     }
 }

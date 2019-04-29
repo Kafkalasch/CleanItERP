@@ -1,5 +1,5 @@
 using System;
-using CleanItERP.Model;
+using CleanItERP.DataModel;
 
 namespace CleanItERPTests.Model
 {
