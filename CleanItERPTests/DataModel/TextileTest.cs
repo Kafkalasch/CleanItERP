@@ -6,9 +6,9 @@ using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Xunit;
 
-namespace CleanItERPTests.Model
+namespace CleanItERPTests.DataModel
 {
-    public class TextileTest : AModelTest
+    public class TextileTest : ADbContextTest
     {
         
         [Fact]

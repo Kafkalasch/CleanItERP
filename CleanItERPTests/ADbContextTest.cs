@@ -4,15 +4,15 @@ using FluentAssertions;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
-namespace CleanItERPTests.Model
+namespace CleanItERPTests.DataModel
 {
-    public abstract class AModelTest : IDisposable
+    public abstract class ADbContextTest : IDisposable
     {
 
         private SqliteConnection Connection { get; }
         private DbContextOptions<CleanItERPContext> ContextOptions { get; }
 
-        public AModelTest()
+        public ADbContextTest()
         {
             Connection = new SqliteConnection("DataSource=:memory:");
             Connection.Open();
@@ -33,7 +33,8 @@ namespace CleanItERPTests.Model
 
         protected CleanItERPContext CreateContext() => new CleanItERPContext(ContextOptions);
 
-        protected void SavingContextShouldThrowNotNullConstrainedFailedException(CleanItERPContext context){
+        protected void SavingContextShouldThrowNotNullConstrainedFailedException(CleanItERPContext context)
+        {
             context.Invoking(c => c.SaveChanges())
                     .Should().Throw<Microsoft.EntityFrameworkCore.DbUpdateException>()
                     .WithInnerException<Microsoft.Data.Sqlite.SqliteException>()

@@ -1,7 +1,7 @@
 using System;
 using CleanItERP.DataModel;
 
-namespace CleanItERPTests.Model
+namespace CleanItERPTests.DataModel
 {
     public static class EntityFactory
     {

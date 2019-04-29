@@ -1,7 +1,7 @@
 using FluentAssertions;
 using FluentAssertions.Numeric;
 
-namespace CleanItERPTests.Model
+namespace CleanItERPTests.DataModel
 {
     public static class NumericAssertionsExtensions
     {

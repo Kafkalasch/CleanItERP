@@ -3,9 +3,9 @@ using CleanItERP.DataModel;
 using FluentAssertions;
 using Xunit;
 
-namespace CleanItERPTests.Model
+namespace CleanItERPTests.DataModel
 {
-    public class OrderTest : AModelTest
+    public class OrderTest : ADbContextTest
     {
         [Fact]
         public void TestBranchNavigationOfOrder()

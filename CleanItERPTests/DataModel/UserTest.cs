@@ -2,9 +2,9 @@ using CleanItERP.DataModel;
 using FluentAssertions;
 using Xunit;
 
-namespace CleanItERPTests.Model
+namespace CleanItERPTests.DataModel
 {
-    public class UserTest : AModelTest
+    public class UserTest : ADbContextTest
     {
         [Fact]
         public void TestUserRoleNavigationOfUser()

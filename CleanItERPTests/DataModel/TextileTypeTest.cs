@@ -3,9 +3,9 @@ using CleanItERP.DataModel;
 using FluentAssertions;
 using Xunit;
 
-namespace CleanItERPTests.Model
+namespace CleanItERPTests.DataModel
 {
-    public class TextileTypeTest : AModelTest
+    public class TextileTypeTest : ADbContextTest
     {
         [Fact]
         public void TestTextileReverseNavigationOfTextileType()
