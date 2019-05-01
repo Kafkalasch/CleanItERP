@@ -14,21 +14,11 @@ namespace CleanItERP
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
-        protected ILogger<Startup> Logger {get;}
-
-        public Startup(IHostingEnvironment env, ILogger<Startup> logger)
+        private const string AllowAnyOriginPolicy = "AllowAnyOrigin";
+        private IHostingEnvironment Environment {get;}
+        public Startup(IHostingEnvironment env)
         {
-            var configBuilder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json")
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json")
-                .AddJsonFile("appsettings.local.json", optional: true)
-                .AddEnvironmentVariables();
-
-            Configuration = configBuilder.Build();
-
-            Logger = logger;
+            Environment = env;
         }
 
 
@@ -44,13 +34,22 @@ namespace CleanItERP
             });
 
             services.AddDbContext<CleanItERPContext>(
-                options => options.UseSqlite("DataSource=:memory:?cache=shared")
+                options => options.UseSqlite("DataSource = sqliteDatabase.db")
             );
 
             services.AddScoped<IOrderManager, OrderManager>();
             services.AddScoped<IBranchListService, BranchListService>();
             services.AddScoped<ITextileStateListService, TextileStateListService>();
             services.AddScoped<ITextileTypeListService, TextileTypeListService>();
+
+            if(Environment.IsDevelopment()){
+                services.AddCors(options =>
+                    {
+                        options.AddPolicy(
+                            AllowAnyOriginPolicy,
+                            policy => policy.AllowAnyOrigin());
+                    });
+            }
 
         }
 
@@ -60,6 +59,7 @@ namespace CleanItERP
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors(AllowAnyOriginPolicy);
             }
             else
             {
@@ -80,7 +80,7 @@ namespace CleanItERP
 
                 if (env.IsDevelopment())
                 {
-                    spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
+                    spa.UseProxyToSpaDevelopmentServer("http://localhost:8080");
                 }
             });
 
