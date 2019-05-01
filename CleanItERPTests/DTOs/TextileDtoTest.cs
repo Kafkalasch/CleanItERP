@@ -1,4 +1,5 @@
 using System.Linq;
+using CleanItERP.DataModel;
 using CleanItERP.DTOs;
 using CleanItERPTests.DataModel;
 using FluentAssertions;
@@ -9,21 +10,21 @@ namespace CleanItERPTests.DTOs
     public class TextileDtoTest : ADbContextTest
     {
         [Fact]
-        public void MapsPropsProperlyWithLoadedNavigationProps(){
-            var textile = EntityFactory.CreateTextile();
-            var textileDto = textile.ToDto(null);
-            textileDto.Id.Should().Be(textile.Id);
-            textileDto.Identifier.Should().Be(textile.Identifier);
-            textileDto.TextileType.Should().Be(textile.TextileType.Description);
-            textileDto.TextileState.Should().Be(textile.TextileState.Description);
+        public void MapsPropsProperlyWithLoadedNavigationProps()
+        {
+            var textileWithNavs = EntityFactory.CreateTextile();
+            var textileDto = textileWithNavs.ToDto(null);
+
+            AssertProperlyMappedProps(textileDto, textileWithNavs);
         }
+
 
         [Fact]
         public void MapsPropsProperlyWithoutLoadedNavigationProps(){
-            var textile = EntityFactory.CreateTextile();
+            var textileWithNavs = EntityFactory.CreateTextile();
 
             using(var context = CreateContext()){
-                context.Add(textile);
+                context.Add(textileWithNavs);
                 context.SaveChanges();
             }
 
@@ -35,11 +36,18 @@ namespace CleanItERPTests.DTOs
                 textileWithoutNavs.TextileType.Should().BeNull();
 
                 var textileDto = textileWithoutNavs.ToDto(context);
-                textileDto.Id.Should().Be(textile.Id);
-                textileDto.Identifier.Should().Be(textile.Identifier);
-                textileDto.TextileType.Should().Be(textile.TextileType.Description);
-                textileDto.TextileState.Should().Be(textile.TextileState.Description);
+                textileDto.Id.Should().Be(textileWithNavs.Id);
+
+                AssertProperlyMappedProps(textileDto, textileWithNavs);
             }
+        }
+
+        private static void AssertProperlyMappedProps(TextileDto textileDto, Textile textileWithNavigations)
+        {
+            textileDto.Id.Should().Be(textileWithNavigations.Id);
+            textileDto.Identifier.Should().Be(textileWithNavigations.Identifier);
+            textileDto.TextileType.Should().Be(textileWithNavigations.TextileType.Description);
+            textileDto.TextileState.Should().Be(textileWithNavigations.TextileState.Description);
         }
     }
 }

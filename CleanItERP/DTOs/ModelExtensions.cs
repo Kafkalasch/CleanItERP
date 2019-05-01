@@ -11,5 +11,8 @@ namespace CleanItERP.DTOs
         public static EmployeeDto ToDto(this Employee employee) => EmployeeDto.CreateFromEmployee(employee);
 
         public static TextileDto ToDto(this Textile textile, CleanItERPContext context) => TextileDto.CreateFromTextile(textile, context);
+
+        public static OrderDto ToDto(this Order order, CleanItERPContext context) => OrderDto.CreateFromOrder(order, context);
+
     }
 }
