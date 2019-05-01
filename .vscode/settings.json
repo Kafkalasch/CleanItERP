@@ -13,5 +13,6 @@
     "jest.showCoverageOnLoad": true,
     "cSpell.words": [
         "Xunit"
-    ]
+    ],
+    "reactTypeScriptToolbox.stylesheet": "scss"
 }
