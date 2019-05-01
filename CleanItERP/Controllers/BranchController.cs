@@ -11,18 +11,18 @@ namespace CleanItERP.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OrderController : ControllerBase
+    public class BranchController : ControllerBase
     {
-        private IOrderManager OrderManager { get; }
-        public OrderController(IOrderManager orderManager)
+        private IBranchListService Service { get; }
+        public BranchController(IBranchListService service)
         {
-            this.OrderManager = orderManager;
+            this.Service = service;
         }
 
-        [HttpGet("Orders")]
-        public ActionResult<IEnumerable<Order>> GetOrders()
+        [HttpGet("All")]
+        public ActionResult<IEnumerable<Branch>> GetAllBranches()
         {
-            return OrderManager.GetOrders().ToList();
+            return Service.GetBranches().ToList();
         }
 
     }

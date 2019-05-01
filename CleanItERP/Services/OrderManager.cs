@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using CleanItERP.DataModel;
 
-namespace CleanItERP.BusinessModel
+namespace CleanItERP.Services
 {
     public class OrderManager : IOrderManager
     {

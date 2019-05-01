@@ -1,4 +1,4 @@
-using CleanItERP.BusinessModel;
+using CleanItERP.Services;
 using CleanItERP.DataModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -48,6 +48,7 @@ namespace CleanItERP
             );
 
             services.AddScoped<IOrderManager, OrderManager>();
+            services.AddScoped<IBranchListService, BranchListService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

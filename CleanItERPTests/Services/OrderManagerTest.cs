@@ -1,10 +1,10 @@
 
-using CleanItERP.BusinessModel;
+using CleanItERP.Services;
 using CleanItERPTests.DataModel;
 using FluentAssertions;
 using Xunit;
 
-namespace CleanItERPTests.BusinessModel
+namespace CleanItERPTests.Services
 {
     public class OrderManagerTest : ADbContextTest
     {
