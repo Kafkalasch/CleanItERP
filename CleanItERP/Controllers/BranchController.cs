@@ -6,6 +6,7 @@ using CleanItERP.Services;
 using CleanItERP.DataModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using CleanItERP.DTOs;
 
 namespace CleanItERP.Controllers
 {
@@ -20,7 +21,7 @@ namespace CleanItERP.Controllers
         }
 
         [HttpGet("All")]
-        public ActionResult<IEnumerable<Branch>> GetAllBranches()
+        public ActionResult<IEnumerable<BranchDto>> GetAllBranches()
         {
             return Service.GetBranches().ToList();
         }

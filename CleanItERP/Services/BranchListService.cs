@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using CleanItERP.DataModel;
+using CleanItERP.DTOs;
 
 namespace CleanItERP.Services
 {
@@ -11,6 +13,11 @@ namespace CleanItERP.Services
             this.Context = context;
         }
 
-        public IEnumerable<Branch> GetBranches() => Context.Branches;
+        public IEnumerable<BranchDto> GetBranches(){
+            var dtos = Context.Branches.Select(
+                branch => BranchDto.CreateFromBranch(branch)
+            );
+            return dtos;
+        } 
     }
 }

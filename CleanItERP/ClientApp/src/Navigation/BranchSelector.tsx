@@ -25,7 +25,7 @@ export default class BranchSelector extends React.Component<Props, State>{
         const branches = await retrieveBranches();
         this.setState({
             branches: branches
-        })
+        }) 
         
         if(branches.length > 0){
             this.props.onBranchSelect(branches[0]);

@@ -6,6 +6,7 @@ using CleanItERPTests.DataModel;
 using FluentAssertions;
 using NSubstitute;
 using Xunit;
+using CleanItERP.DTOs;
 
 namespace CleanItERPTests.Controllers
 {
@@ -26,8 +27,8 @@ namespace CleanItERPTests.Controllers
         public void GetAllBranchesReturnsResultOfServicesGetBranches()
         {
             var service = Substitute.For<IBranchListService>();
-            var branch = EntityFactory.CreateBranch();
-            var branches = new List<Branch>(){ branch };
+            var branch = EntityFactory.CreateBranch().ToDto();
+            var branches = new List<BranchDto>(){ branch };
             service.GetBranches().Returns(branches);
             var controller = new BranchController(service);
 
