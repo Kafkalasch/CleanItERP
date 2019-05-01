@@ -1,7 +1,7 @@
 import * as React from "react";
 import "./App.scss";
-import { Footer } from "./Footer";
-import { Header } from "./Header";
+import { Footer } from "./Navigation/Footer";
+import { Header } from "./Navigation/Header";
 
 export class App extends React.Component{
 
