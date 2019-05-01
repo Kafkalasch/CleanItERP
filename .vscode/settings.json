@@ -6,13 +6,9 @@
         "CleanItERP/ClientApp/node_modules": true,
         "CleanItERPTests/obj": true,
         "CleanItERPTests/bin": true,
+        "CleanItERP/sqliteDatabase.db": true
     },
     "editor.codeActionsOnSave": {
         "source.organizeImports": true
-    },
-    "jest.showCoverageOnLoad": true,
-    "cSpell.words": [
-        "Xunit"
-    ],
-    "reactTypeScriptToolbox.stylesheet": "scss"
+    }
 }
