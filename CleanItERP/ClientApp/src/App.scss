@@ -1,0 +1,36 @@
+@import "../node_modules/@blueprintjs/core/lib/scss/variables.scss";
+
+$header-height: $pt-navbar-height;
+$footer-height: 30px;
+$header-area: "header";
+$footer-area: "footer";
+$main-area: "main";
+
+.app {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: $header-height auto $footer-height;
+    grid-template-areas: 
+        $header-area
+        $main-area
+        $footer-area;
+    align-content: stretch;
+    align-items: stretch;
+    justify-content: stretch;
+    justify-items: stretch;
+
+    .header{
+        grid-area: header;
+    }
+
+    .main{
+        grid-area: main;
+    }
+
+    .footer{
+        grid-area: footer;
+    }
+}
