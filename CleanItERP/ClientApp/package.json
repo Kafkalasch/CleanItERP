@@ -8,6 +8,7 @@
         "@types/react": "^16.8.14",
         "@types/react-dom": "^16.8.4",
         "@types/url-join": "^4.0.0",
+        "axios": "^0.18.0",
         "normalize.css": "^8.0.1",
         "react": "^16.0.0",
         "react-dom": "^16.0.0",

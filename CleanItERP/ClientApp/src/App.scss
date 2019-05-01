@@ -10,6 +10,7 @@ $main-area: "main";
     position: relative;
     height: 100%;
     width: 100%;
+    min-width: 400px;
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: $header-height auto $footer-height;
