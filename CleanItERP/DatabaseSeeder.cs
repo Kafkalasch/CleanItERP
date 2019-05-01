@@ -43,9 +43,17 @@ namespace CleanItERP
         {
             Context = context;
         }
+
+        public void SeedIfEmpty(){
+            Context.Database.EnsureCreated();
+
+            if(Context.Branches.IsEmpty()){
+                Seed();
+            }
+        }
         public void Seed()
         {
-            var created = Context.Database.EnsureCreated();
+            Context.Database.EnsureCreated();
 
             CreateUserRoles();
             CreateUsers();

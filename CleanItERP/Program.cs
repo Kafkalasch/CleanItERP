@@ -30,14 +30,15 @@ namespace CleanItERP
         private static void SeedData(IWebHost host){
             using(var scope = host.Services.CreateScope()){
 
-                using(var context = scope.ServiceProvider.GetRequiredService<CleanItERPContext>()){
-
-                    var seeder = new DatabaseSeeder(context);
-                    seeder.Seed();
-
+                using(var context = scope.ServiceProvider.GetRequiredService<CleanItERPContext>())
+                {
+                        var seeder = new DatabaseSeeder(context);
+                        seeder.SeedIfEmpty();
                 }
             }
         }
+
+
         
     }
 }
