@@ -37,7 +37,7 @@ namespace CleanItERP
                 options => options.UseSqlite("DataSource = sqliteDatabase.db")
             );
 
-            services.AddScoped<IOrderManager, OrderManager>();
+            services.AddScoped<IOrderListService, OrderListService>();
             services.AddScoped<IBranchListService, BranchListService>();
             services.AddScoped<ITextileStateListService, TextileStateListService>();
             services.AddScoped<ITextileTypeListService, TextileTypeListService>();

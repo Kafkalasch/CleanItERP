@@ -6,21 +6,21 @@ using Xunit;
 
 namespace CleanItERPTests.Services
 {
-    public class OrderManagerTest : ADbContextTest
+    public class OrderListServiceTest : ADbContextTest
     {
         [Fact]
-        public void GetOrdersReturnsEmptyEnumerableWhenDatabaseIsEmpty()
+        public void ReturnsEmptyEnumerableWhenDatabaseIsEmpty()
         {
             using (var context = CreateContext())
             {
-                var manager = new OrderManager(context);
-                var orders = manager.GetOrders();
+                var manager = new OrderListService(context);
+                var orders = manager.GetAllOrders();
                 orders.Should().BeEmpty();
             }
         }
 
         [Fact]
-        public void GetOrdersReturnsAllOrdersThatAreSavedInDatabase()
+        public void ReturnsAllOrdersThatAreSavedInDatabase()
         {
             var order1Identifier = "Order 1";
             var order2Identifier = "Order 2";
@@ -37,8 +37,8 @@ namespace CleanItERPTests.Services
             }
 
             using(var context = CreateContext()){
-                var manager = new OrderManager(context);
-                var orders = manager.GetOrders();
+                var manager = new OrderListService(context);
+                var orders = manager.GetAllOrders();
                 orders.Should().HaveCount(2);
                 orders.Should().Contain(o => o.Identifier == order1Identifier);
                 orders.Should().Contain(o => o.Identifier == order2Identifier);

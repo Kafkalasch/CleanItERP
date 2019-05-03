@@ -6,6 +6,7 @@ using CleanItERP.Services;
 using CleanItERP.DataModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using CleanItERP.DTOs;
 
 namespace CleanItERP.Controllers
 {
@@ -13,16 +14,16 @@ namespace CleanItERP.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private IOrderManager OrderManager { get; }
-        public OrderController(IOrderManager orderManager)
+        private IOrderListService OrderManager { get; }
+        public OrderController(IOrderListService orderManager)
         {
             this.OrderManager = orderManager;
         }
 
         [HttpGet("Orders")]
-        public ActionResult<IEnumerable<Order>> GetOrders()
+        public ActionResult<IEnumerable<OrderDto>> GetOrders()
         {
-            return OrderManager.GetOrders().ToList();
+            return OrderManager.GetAllOrders().ToList();
         }
 
     }

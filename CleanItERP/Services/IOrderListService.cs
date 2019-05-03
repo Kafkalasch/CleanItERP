@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using CleanItERP.DataModel;
+using CleanItERP.DTOs;
 
 namespace CleanItERP.Services
 {
-    public interface IOrderManager
+    public interface IOrderListService
     {
-        IEnumerable<Order> GetOrders();
+        IEnumerable<OrderDto> GetAllOrders();
     }
 }
