@@ -31,6 +31,8 @@ export class TextileStateRenderer extends React.Component<Props>{
                 iconName = IconNames.FLASH;
                 color = Colors.ORANGE3;
                 break;
+            default:
+                console.error("did not recognize the textile state: ", this.props.state);
         }
 
         return(

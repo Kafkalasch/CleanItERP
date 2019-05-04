@@ -3,16 +3,19 @@ import { Branch } from "./api/Models";
 import "./App.scss";
 import { Footer } from "./Navigation/Footer";
 import { Header } from "./Navigation/Header";
-import { OrderTable } from "./showOrders/OrderTable";
+import { createPanel, Panel } from "./Navigation/PanelFactory";
+
 
 interface Props { }
 
 interface State {
-    selectedBranch: Branch
+    selectedBranch: Branch,
+    selectedPanel: Panel
 }
 
 const createInitialState = () : State => ({
-    selectedBranch: null
+    selectedBranch: null,
+    selectedPanel: Panel.ShowOrders
 })
 
 export class App extends React.Component<Props, State>{
@@ -24,9 +27,11 @@ export class App extends React.Component<Props, State>{
             <div className="app">
                 <Header 
                     selectedBranch={this.state.selectedBranch}
-                    onBranchSelect={this.onBranchSelect}/>
+                    onBranchSelect={this.onBranchSelect}
+                    selectedPanel={this.state.selectedPanel}
+                    onPanelClick={this.onPanelSelect}/>
                 <div className="main">
-                    <OrderTable branch={this.state.selectedBranch} />
+                    {createPanel(this.state.selectedPanel, { branch: this.state.selectedBranch })}
                 </div>
                 <Footer />
             </div>
@@ -37,5 +42,11 @@ export class App extends React.Component<Props, State>{
         this.setState({
             selectedBranch: newBranch
         })
-    } 
+    }
+
+    private onPanelSelect = (showPanel: Panel) => {
+        this.setState({
+            selectedPanel: showPanel
+        })
+    }
 }

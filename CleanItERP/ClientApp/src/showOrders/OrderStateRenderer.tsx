@@ -27,6 +27,8 @@ export class OrderStateRenderer extends React.Component<Props>{
                 iconName = IconNames.TINT;
                 color = Colors.BLUE2;
                 break;
+            default:
+                console.error("did not recognize the order state: ", this.props.state);
         }
 
         return(

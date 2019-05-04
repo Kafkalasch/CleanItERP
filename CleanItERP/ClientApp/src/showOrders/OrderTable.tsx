@@ -2,15 +2,13 @@ import { Button } from "@blueprintjs/core";
 import * as React from "react";
 import ReactTable, { Column } from "react-table";
 import { retrieveOrders } from "src/api/dataCommunication";
-import { Branch, Order } from "src/api/Models";
+import { Order } from "src/api/Models";
+import { PanelProps } from "src/Navigation/PanelFactory";
 import { isDefinedAndNotNull, isUndefinedOrNull } from "src/utils/utilities";
 import { CustomerCell, DateCell, EmployeeCell, OrderStateCell, TextileCell } from "./CellRenderers";
 import "./OrderTable.scss";
 import { renderTextileListAsSubcomponent } from "./TextileList";
 
-interface Props {
-    branch: Branch
-}
 
 interface State {
     orders: Order[],
@@ -55,6 +53,7 @@ const columns: Column<Order>[] = [
     {
         id: "state",
         Header: "State",
+        filterable: false, // TODO: implement custom filter
         accessor: o => o,
         Cell: OrderStateCell
     },
@@ -68,7 +67,7 @@ const columns: Column<Order>[] = [
     }
 ]
 
-export class OrderTable extends React.Component<Props, State>{
+export class OrderTable extends React.Component<PanelProps, State>{
 
     public state = createInitialState();
 
@@ -78,7 +77,7 @@ export class OrderTable extends React.Component<Props, State>{
         }
     }
 
-    public async componentDidUpdate(prevProps: Props, prevState: State) {
+    public async componentDidUpdate(prevProps: PanelProps, prevState: State) {
         if (prevProps.branch !== this.props.branch
             && isDefinedAndNotNull(this.props.branch)) {
             await this.updateOrders();
