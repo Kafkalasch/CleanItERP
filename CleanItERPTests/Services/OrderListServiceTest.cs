@@ -14,21 +14,23 @@ namespace CleanItERPTests.Services
             using (var context = CreateContext())
             {
                 var manager = new OrderListService(context);
-                var orders = manager.GetAllOrders();
+                var orders = manager.GetOrdersForBranch(1);
                 orders.Should().BeEmpty();
             }
         }
 
         [Fact]
-        public void ReturnsAllOrdersThatAreSavedInDatabase()
+        public void ReturnsAllOrdersOfSpecifiedBranchedThatAreSavedInDatabase()
         {
             var order1Identifier = "Order 1";
             var order2Identifier = "Order 2";
 
             var order1 = EntityFactory.CreateOrder();
             order1.Identifier = order1Identifier;
+            order1.BranchId = 1;
             var order2 = EntityFactory.CreateOrder();
             order2.Identifier = order2Identifier;
+            order2.BranchId = 2;
 
             using(var context = CreateContext()){
                 context.Add(order1);
@@ -38,10 +40,10 @@ namespace CleanItERPTests.Services
 
             using(var context = CreateContext()){
                 var manager = new OrderListService(context);
-                var orders = manager.GetAllOrders();
-                orders.Should().HaveCount(2);
+                var orders = manager.GetOrdersForBranch(1);
+                orders.Should().HaveCount(1);
                 orders.Should().Contain(o => o.Identifier == order1Identifier);
-                orders.Should().Contain(o => o.Identifier == order2Identifier);
+                orders.Should().NotContain(o => o.Identifier == order2Identifier);
             }
 
         }

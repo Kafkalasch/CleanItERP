@@ -14,13 +14,14 @@ namespace CleanItERP.Services
             this.Context = context;
         }
 
-        public IEnumerable<OrderDto> GetAllOrders(){
+        public IEnumerable<OrderDto> GetOrdersForBranch(int branchId){
             var dtos = new List<OrderDto>();
             var orders = Context.Orders
                             .Include(o => o.Branch)
                             .Include(o => o.Clerk)
                             .Include(o => o.Customer)
                             .Include(o => o.Textiles)
+                            .Where(o => o.BranchId == branchId)
                             .ToList();
             foreach(var order in orders){
                 dtos.Add(order.ToDto(Context));

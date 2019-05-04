@@ -6,6 +6,6 @@ namespace CleanItERP.Services
 {
     public interface IOrderListService
     {
-        IEnumerable<OrderDto> GetAllOrders();
+        IEnumerable<OrderDto> GetOrdersForBranch(int branchId);
     }
 }

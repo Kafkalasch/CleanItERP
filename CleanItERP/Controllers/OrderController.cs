@@ -20,10 +20,10 @@ namespace CleanItERP.Controllers
             this.OrderManager = orderManager;
         }
 
-        [HttpGet("Orders")]
-        public ActionResult<IEnumerable<OrderDto>> GetOrders()
+        [HttpGet("ForBranch/{branchId}")]
+        public ActionResult<IEnumerable<OrderDto>> GetOrdersForBranch(int branchId)
         {
-            return OrderManager.GetAllOrders().ToList();
+            return OrderManager.GetOrdersForBranch(branchId).ToList();
         }
 
     }
