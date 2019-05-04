@@ -7,5 +7,7 @@ namespace CleanItERP.Services
     public interface IOrderListService
     {
         IEnumerable<OrderDto> GetOrdersForBranch(int branchId);
+
+        IEnumerable<OrderDto> GetFinishedOrdersForBranch(int branchId);
     }
 }

@@ -14,16 +14,22 @@ namespace CleanItERP.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private IOrderListService OrderManager { get; }
-        public OrderController(IOrderListService orderManager)
+        private IOrderListService OrderListService { get; }
+        public OrderController(IOrderListService orderListService)
         {
-            this.OrderManager = orderManager;
+            this.OrderListService = orderListService;
         }
 
         [HttpGet("ForBranch/{branchId}")]
         public ActionResult<IEnumerable<OrderDto>> GetOrdersForBranch(int branchId)
         {
-            return OrderManager.GetOrdersForBranch(branchId).ToList();
+            return OrderListService.GetOrdersForBranch(branchId).ToList();
+        }
+
+        [HttpGet("FinishedOrdersForBranch/{branchId}")]
+        public ActionResult<IEnumerable<OrderDto>> GetFinishedOrdersForBranch(int branchId)
+        {
+            return OrderListService.GetFinishedOrdersForBranch(branchId).ToList();
         }
 
     }

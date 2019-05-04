@@ -185,10 +185,10 @@ namespace CleanItERP
 
         private void CreateTextileStates()
         {
-            Dirty = new TextileState() { Description = "Dirty" };
-            BeingWashed = new TextileState() { Description = "Being Washed" };
-            Drying = new TextileState() { Description = "Drying" };
-            Finished = new TextileState() { Description = "Finished" };
+            Dirty = new TextileState() { Description = DatabaseConstants.TextileState.DIRTY };
+            BeingWashed = new TextileState() { Description = DatabaseConstants.TextileState.BEING_WASHED };
+            Drying = new TextileState() { Description = DatabaseConstants.TextileState.DRYING };
+            Finished = new TextileState() { Description = DatabaseConstants.TextileState.FINISHED };
 
             Context.Add(Dirty);
             Context.Add(BeingWashed);
