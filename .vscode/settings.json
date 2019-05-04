@@ -5,8 +5,7 @@
         "CleanItERP/ClientApp/build": true,
         "CleanItERP/ClientApp/node_modules": true,
         "CleanItERPTests/obj": true,
-        "CleanItERPTests/bin": true,
-        "CleanItERP/sqliteDatabase.db": true
+        "CleanItERPTests/bin": true
     },
     "editor.codeActionsOnSave": {
         "source.organizeImports": true

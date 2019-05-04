@@ -31,11 +31,16 @@ namespace CleanItERP
         private TextileState Drying { get; set; }
         private TextileState Finished { get; set; }
 
-        private Order JuliasOrder {get; set;}
+        private Order JuliasFirstOrder {get; set;}
+        private Order JuliasSecondOrder {get; set;}
+
         private Order JacksOrder {get; set;}
 
         private Textile JuliasJacket {get; set;}
-        private Textile JuliasJeans {get; set;}
+        private Textile JuliasBlueJeans {get; set;}
+        private Textile JuliasRedJeans {get; set;}
+        private Textile JuliasGreenJeans {get; set;}
+
         private Textile JacksBlueJacket {get; set;}
         private Textile JacksRedJacket {get; set;}
 
@@ -197,12 +202,21 @@ namespace CleanItERP
         }
 
         private void CreateOrders(){
-            JuliasOrder = new Order(){
-                Identifier = "Julia's Order",
+            JuliasFirstOrder = new Order(){
+                Identifier = "Julia's first Order",
                 Branch = Vienna,
                 Clerk = JohnClean,
                 Customer = JuliaMessy,
                 DateReceived = new DateTime(2019, 04, 29, 12, 0, 0),
+                DateReturned = null
+            };
+
+            JuliasSecondOrder = new Order(){
+                Identifier = "Julia's second Order",
+                Branch = Vienna,
+                Clerk = JohnClean,
+                Customer = JuliaMessy,
+                DateReceived = new DateTime(2019, 04, 30, 12, 0, 0),
                 DateReturned = null
             };
 
@@ -215,41 +229,58 @@ namespace CleanItERP
                 DateReturned = null
             };
 
-            Context.Add(JuliasOrder);
+            Context.Add(JuliasFirstOrder);
+            Context.Add(JuliasSecondOrder);
             Context.Add(JacksOrder);
         }
 
         private void CreateTextiles(){
-            JuliasJeans = new Textile(){
-                Identifier = "Julia's Jeans",
-                Order = JuliasOrder,
+            JuliasBlueJeans = new Textile(){
+                Identifier = "Julia's blue Jeans",
+                Order = JuliasFirstOrder,
                 TextileType = Jeans,
                 TextileState = Finished
             };
 
             JuliasJacket = new Textile(){
                 Identifier = "Julia's Jacket",
-                Order = JuliasOrder,
+                Order = JuliasFirstOrder,
                 TextileType = Jacket,
                 TextileState = Finished
             };
 
+            JuliasRedJeans = new Textile(){
+                Identifier = "Julia's red Jeans",
+                Order = JuliasSecondOrder,
+                TextileType = Jeans,
+                TextileState = Finished
+            };
+
+            JuliasGreenJeans = new Textile(){
+                Identifier = "Julia's green Jeans",
+                Order = JuliasSecondOrder,
+                TextileType = Jeans,
+                TextileState = Finished
+            };
+
             JacksBlueJacket = new Textile(){
-                Identifier = "Julia's Blue Jacket",
+                Identifier = "Jacks's blue Jacket",
                 Order = JacksOrder,
                 TextileType = Jacket,
                 TextileState = BeingWashed
             };
 
             JacksRedJacket = new Textile(){
-                Identifier = "Julia's Red Jacket",
+                Identifier = "Jack's red Jacket",
                 Order = JacksOrder,
                 TextileType = Jacket,
                 TextileState = Drying
             };
 
-            Context.Add(JuliasJeans);
+            Context.Add(JuliasBlueJeans);
             Context.Add(JuliasJacket);
+            Context.Add(JuliasRedJeans);
+            Context.Add(JuliasGreenJeans);
             Context.Add(JacksBlueJacket);
             Context.Add(JacksRedJacket);
         }
