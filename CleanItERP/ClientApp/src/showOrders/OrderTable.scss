@@ -1,0 +1,14 @@
+@import "../../node_modules/react-table/react-table.css";
+
+.control-buttons-bar {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+    .toggle-filter-button{
+        margin: 5px;
+    }
+}

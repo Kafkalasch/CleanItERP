@@ -1,9 +1,15 @@
 import axios from "axios";
-import { Branch } from "./Models";
-import { getAllBranchesUrl as getGetAllBranchesUrl } from "./routing";
+import { Branch, Order } from "./Models";
+import { getGetAllBranchesUrl, getGetOrdersOfBranchUrl } from "./routing";
 
 export const retrieveBranches = async () : Promise<Branch[]> => {
     const url = getGetAllBranchesUrl();
+    const response = await axios.get(url);
+    return response.data;
+}
+
+export const retrieveOrders = async (branch: Branch) : Promise<Order[]> => {
+    const url = getGetOrdersOfBranchUrl(branch);
     const response = await axios.get(url);
     return response.data;
 }

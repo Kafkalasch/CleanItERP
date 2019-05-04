@@ -1,0 +1,9 @@
+.textiles-cell{
+    cursor: pointer;
+    text-align: center;
+    .expanded-symbol{
+        margin-left: 5px;
+        font-size: 14pt;
+        user-select: none;
+    }
+}

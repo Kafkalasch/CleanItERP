@@ -3,10 +3,9 @@ import { Branch } from "./api/Models";
 import "./App.scss";
 import { Footer } from "./Navigation/Footer";
 import { Header } from "./Navigation/Header";
+import { OrderTable } from "./showOrders/OrderTable";
 
-interface Props {
-
-}
+interface Props { }
 
 interface State {
     selectedBranch: Branch
@@ -27,9 +26,7 @@ export class App extends React.Component<Props, State>{
                     selectedBranch={this.state.selectedBranch}
                     onBranchSelect={this.onBranchSelect}/>
                 <div className="main">
-                    {this.state.selectedBranch !== null ?
-                        this.state.selectedBranch.name
-                        : "null"}
+                    <OrderTable branch={this.state.selectedBranch} />
                 </div>
                 <Footer />
             </div>

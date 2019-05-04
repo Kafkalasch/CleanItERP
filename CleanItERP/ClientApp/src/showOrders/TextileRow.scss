@@ -1,0 +1,16 @@
+
+.textile-row{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    .textile-identifier {
+        margin-left: 10px;
+        flex-basis: 20%;
+    }
+    .textile-type{
+        flex-basis: 20%;
+    }
+}
