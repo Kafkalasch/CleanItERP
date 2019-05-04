@@ -6,4 +6,4 @@ const backendUrl = "http://localhost:5000";
 
 export const getGetAllBranchesUrl = () => urljoin(backendUrl, "api/Branch/All");
 
-export const getGetOrdersOfBranchUrl = (branch: Branch) => urljoin(backendUrl, "api/Order/Orders");
+export const getGetOrdersOfBranchUrl = (branch: Branch) => urljoin(backendUrl, "api/Order/ForBranch", branch.id.toString());
