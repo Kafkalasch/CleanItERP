@@ -17,7 +17,7 @@ const createInitialState = () : State => ({
     branches: []
 })
 
-export default class BranchSelector extends React.Component<Props, State>{
+export class BranchSelector extends React.Component<Props, State>{
 
     public state = createInitialState();
 
@@ -38,7 +38,7 @@ export default class BranchSelector extends React.Component<Props, State>{
         {
             branches = [ "no branches found"]
         }else{
-            branches = this.state.branches.map(branch => branch.name);
+            branches = this.state.branches.map(branch => this.convertBranchToOptionString(branch));
         }
 
         return(

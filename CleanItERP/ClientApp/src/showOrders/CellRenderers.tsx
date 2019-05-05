@@ -1,7 +1,6 @@
-import * as moment from "moment";
 import * as React from "react";
 import { Customer, Employee, getFullName, getOrderState, Order } from "src/api/Models";
-import { isUndefinedOrNull } from "src/utils/utilities";
+import { formatDate, isUndefinedOrNull } from "src/utils/utilities";
 import "./CellRenderers.scss";
 import { OrderStateRenderer } from "./OrderStateRenderer";
 
@@ -26,7 +25,7 @@ export const DateCell = (cellProps: CellProps<string>) => {
     if(isUndefinedOrNull(dateString))
         return null;
     
-    const representation = moment(dateString).format("YYYY-MM-DD hh:mm");
+    const representation = formatDate(dateString);
     return(
         <div>
             {representation}

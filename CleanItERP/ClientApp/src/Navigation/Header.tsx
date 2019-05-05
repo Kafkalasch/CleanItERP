@@ -1,7 +1,7 @@
 import { Alignment, Button, Intent, Navbar, NavbarDivider, NavbarGroup, NavbarHeading } from "@blueprintjs/core";
 import * as React from "react";
 import { Branch } from "src/api/Models";
-import BranchSelector from "./BranchSelector";
+import { BranchSelector } from "./BranchSelector";
 import "./Header.scss";
 import { Panel } from "./PanelFactory";
 interface Props {
