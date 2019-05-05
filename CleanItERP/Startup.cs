@@ -39,6 +39,7 @@ namespace CleanItERP
 
             services.AddScoped<IListOrdersService, ListOrdersService>();
             services.AddScoped<IListBranchesService, ListBranchesService>();
+            services.AddScoped<ICollectOrderService, CollectOrderService>();
 
             if(Environment.IsDevelopment()){
                 services.AddCors(options =>

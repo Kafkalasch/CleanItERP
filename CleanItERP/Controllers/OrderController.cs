@@ -7,6 +7,8 @@ using CleanItERP.DataModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CleanItERP.DTOs;
+using CleanItERP.Services.Exceptions;
+using Microsoft.AspNetCore.Http;
 
 namespace CleanItERP.Controllers
 {
@@ -14,22 +16,35 @@ namespace CleanItERP.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private IListOrdersService OrderListService { get; }
-        public OrderController(IListOrdersService orderListService)
-        {
-            this.OrderListService = orderListService;
-        }
 
         [HttpGet("ForBranch/{branchId}")]
-        public ActionResult<IEnumerable<OrderDto>> GetOrdersForBranch(int branchId)
+        public ActionResult<IEnumerable<OrderDto>> GetOrdersForBranch(int branchId, [FromServices] IListOrdersService service)
         {
-            return OrderListService.GetOrdersForBranch(branchId).ToList();
+            return service.GetOrdersForBranch(branchId).ToList();
         }
 
         [HttpGet("FinishedOrdersForBranch/{branchId}")]
-        public ActionResult<IEnumerable<OrderDto>> GetFinishedOrdersForBranch(int branchId)
+        public ActionResult<IEnumerable<OrderDto>> GetFinishedOrdersForBranch(int branchId, [FromServices] IListOrdersService service)
         {
-            return OrderListService.GetFinishedOrdersForBranch(branchId).ToList();
+            return service.GetFinishedOrdersForBranch(branchId).ToList();
+        }
+
+        [HttpPatch("CollectOrder/{orderId}")]
+        public IActionResult CollectOrder(int orderId, [FromServices] ICollectOrderService service)
+        {
+            try
+            {
+                service.CollectOrder(orderId);
+                return Ok();
+            }
+            catch (EntityNotFoundException e)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, e);
+            }
+            catch (OrderHasAlreadyBeenCollectedException e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, e);
+            }
         }
 
     }
