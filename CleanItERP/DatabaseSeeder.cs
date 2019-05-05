@@ -43,6 +43,8 @@ namespace CleanItERP
 
         private Textile JacksBlueJacket {get; set;}
         private Textile JacksRedJacket {get; set;}
+        private Textile JacksBlueJeans {get; set;}
+
 
         public DatabaseSeeder(CleanItERPContext context)
         {
@@ -277,12 +279,20 @@ namespace CleanItERP
                 TextileState = Drying
             };
 
+            JacksBlueJeans = new Textile(){
+                Identifier = "Jacks's blue Jeans",
+                Order = JacksOrder,
+                TextileType = Jeans,
+                TextileState = Dirty
+            };
+
             Context.Add(JuliasBlueJeans);
             Context.Add(JuliasJacket);
             Context.Add(JuliasRedJeans);
             Context.Add(JuliasGreenJeans);
             Context.Add(JacksBlueJacket);
             Context.Add(JacksRedJacket);
+            Context.Add(JacksBlueJeans);
         }
 
     }
