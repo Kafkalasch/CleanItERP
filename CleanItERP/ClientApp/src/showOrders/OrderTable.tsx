@@ -2,9 +2,10 @@ import { Button } from "@blueprintjs/core";
 import * as React from "react";
 import ReactTable, { Column } from "react-table";
 import { retrieveOrders } from "src/api/dataCommunication";
-import { Order } from "src/api/Models";
+import { getFullName, getOrderState, Order } from "src/api/Models";
 import { PanelProps } from "src/Navigation/PanelFactory";
-import { isDefinedAndNotNull, isUndefinedOrNull } from "src/utils/utilities";
+import { formatDate, isDefinedAndNotNull, isUndefinedOrNull } from "src/utils/utilities";
+import { createFilter, genericFilter } from "./cellFilters";
 import { CustomerCell, DateCell, EmployeeCell, OrderStateCell, TextileCell } from "./CellRenderers";
 import "./OrderTable.scss";
 import { renderTextileListAsSubcomponent } from "./TextileList";
@@ -24,38 +25,43 @@ const columns: Column<Order>[] = [
     {
         id: "id",
         Header: "Id",
-        accessor: o => o.identifier
+        accessor: o => o.identifier,
+        filterMethod: genericFilter
     },
     {
         id: "customer",
         Header: "Customer",
         accessor: o => o.customer,
-        Cell: CustomerCell
+        Cell: CustomerCell,
+        filterMethod: createFilter( o => getFullName(o.customer))
     },
     {
         id: "clerk",
         Header: "Clerk",
         accessor: o => o.clerk,
-        Cell: EmployeeCell
+        Cell: EmployeeCell,
+        filterMethod: createFilter( o => getFullName(o.clerk))
     },
     {
         id: "dateReceived",
         Header: "Received",
         accessor: o => o.dateReceived,
-        Cell: DateCell
+        Cell: DateCell,
+        filterMethod: createFilter( o => formatDate(o.dateReceived))
     },
     {
         id: "dateReturned",
         Header: "Returned",
         accessor: o => o.dateReturned,
-        Cell: DateCell
+        Cell: DateCell,
+        filterMethod: createFilter( o => formatDate(o.dateReturned))
     },
     {
         id: "state",
         Header: "State",
-        filterable: false, // TODO: implement custom filter
         accessor: o => o,
-        Cell: OrderStateCell
+        Cell: OrderStateCell,
+        filterMethod: createFilter( o => getOrderState(o))
     },
     {
         id: "textiles",
@@ -99,7 +105,7 @@ export class OrderTable extends React.Component<PanelProps, State>{
             <div>
                 <div className="control-buttons-bar">
                     <Button className="toggle-filter-button" onClick={this.onToggleFilterable}>
-                        {this.state.filterable ? "show filters" : "hide filters"}
+                        {this.state.filterable ? "hide filters" : "show filters"}
                     </Button>
                 </div>
                 <ReactTable
