@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Order } from "src/api/Models";
 import { PanelProps } from "src/Navigation/PanelFactory";
+import { CollectOrderCard } from "./CollectOrderCard";
 import { FinishedOrderSelector } from "./FinishedOrderSelector";
-import { OrderViewer } from "./OrderViewer";
 
 interface State {
     selectedOrder: Order,
@@ -12,7 +12,7 @@ const createInitialState = () : State => ({
     selectedOrder: null
 })
 
-export class CollectTextilesPanel extends React.Component<PanelProps, State>{
+export class CollectOrdersPanel extends React.Component<PanelProps, State>{
 
     public state = createInitialState();
 
@@ -24,7 +24,7 @@ export class CollectTextilesPanel extends React.Component<PanelProps, State>{
                     selectedOrder={this.state.selectedOrder}
                     onOrderSelect={this.onOrderSelect}
                     />
-                <OrderViewer order={this.state.selectedOrder} />
+                <CollectOrderCard order={this.state.selectedOrder} />
 
             </div>
         )

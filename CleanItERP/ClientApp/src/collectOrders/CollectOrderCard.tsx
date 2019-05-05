@@ -1,4 +1,5 @@
-import { Card, Elevation } from "@blueprintjs/core";
+import { Button, Card, Elevation, Intent } from "@blueprintjs/core";
+import { IconNames } from "@blueprintjs/icons";
 import * as React from "react";
 import { getFullName, Order } from "src/api/Models";
 import { TextileList } from "src/showOrders/TextileList";
@@ -9,7 +10,7 @@ interface Props {
     order: Order,
 }
 
-export class OrderViewer extends React.Component<Props>{
+export class CollectOrderCard extends React.Component<Props>{
 
     public render(){
         const order = this.props.order;
@@ -29,8 +30,19 @@ export class OrderViewer extends React.Component<Props>{
                     <li>Received: {formatDate(order.dateReceived)}</li>
                 </ul>
                 <TextileList textiles={order.textiles} />
+                <Button
+                    icon={IconNames.CONFIRM}
+                    intent={Intent.PRIMARY}
+                    onClick={this.onCollect}>
+                    Collect
+                </Button>
             </Card>
         )
+
+    }
+
+    private onCollect = () => {
+        
     }
 
 }

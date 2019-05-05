@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Branch } from "src/api/Models";
-import { CollectTextilesPanel } from "src/collectTextiles/CollectTextilesPanel";
+import { CollectOrdersPanel } from "src/collectOrders/CollectOrdersPanel";
 import { OrderTable } from "src/showOrders/OrderTable";
 
 export enum Panel {
@@ -17,7 +17,7 @@ export const createPanel = (panel: Panel, props: PanelProps) => {
         case Panel.ShowOrders:
             return <OrderTable {...props} />;
         case Panel.CollectOrder:
-            return <CollectTextilesPanel {...props} />;
+            return <CollectOrdersPanel {...props} />;
         default:
             console.error("Did not find the panel: ", panel);
     }
