@@ -15,10 +15,6 @@ export class OrderStateRenderer extends React.Component<Props>{
         let iconName: IconName;
         let color: Color;
         switch(this.props.state){
-            case OrderState.Finished:
-                iconName = IconNames.CLEAN;
-                color = Colors.GREEN2;
-                break;
             case OrderState.Dirty:
                 iconName = IconNames.HEATMAP;
                 color = Colors.RED4;
@@ -26,6 +22,14 @@ export class OrderStateRenderer extends React.Component<Props>{
             case OrderState.InProgress:
                 iconName = IconNames.TINT;
                 color = Colors.BLUE2;
+                break;
+            case OrderState.Finished:
+                iconName = IconNames.CLEAN;
+                color = Colors.GREEN2;
+                break;
+            case OrderState.Returned:
+                iconName = IconNames.TICK_CIRCLE;
+                color = Colors.GREEN5;
                 break;
             default:
                 console.error("did not recognize the order state: ", this.props.state);

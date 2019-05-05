@@ -52,12 +52,15 @@ export interface Order {
 export enum OrderState {
     Dirty = "Dirty",
     InProgress = "In progress",
-    Finished = "Finished"
+    Finished = "Finished",
+    Returned = "Returned"
 }
 
 export const getFullName = (person: Customer | Employee) => person.firstName + " " + person.lastName;
 
 export const getOrderState = (order: Order) => {
+    if(order.dateReturned !== null)
+        return OrderState.Returned
     if(allTextilesAreOfState(order.textiles, TextileState.Finished))
         return OrderState.Finished;
     if(allTextilesAreOfState(order.textiles, TextileState.Dirty))
