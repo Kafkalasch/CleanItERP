@@ -1,6 +1,7 @@
 import { Button, Card, Elevation, Intent } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
 import * as React from "react";
+import { collectOrder } from "src/api/dataCommunication";
 import { getFullName, Order } from "src/api/Models";
 import { TextileList } from "src/showOrders/TextileList";
 import { formatDate, isUndefinedOrNull } from "src/utils/utilities";
@@ -8,6 +9,7 @@ import { formatDate, isUndefinedOrNull } from "src/utils/utilities";
 
 interface Props {
     order: Order,
+    onOrderCollected: () => void
 }
 
 export class CollectOrderCard extends React.Component<Props>{
@@ -41,8 +43,9 @@ export class CollectOrderCard extends React.Component<Props>{
 
     }
 
-    private onCollect = () => {
-        
+    private onCollect = async () => {
+        await collectOrder(this.props.order);
+        this.props.onOrderCollected();
     }
 
 }

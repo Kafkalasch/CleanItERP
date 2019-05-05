@@ -46,7 +46,7 @@ namespace CleanItERP
                     {
                         options.AddPolicy(
                             AllowAnyOriginPolicy,
-                            policy => policy.AllowAnyOrigin());
+                            policy => policy.AllowAnyOrigin().AllowAnyMethod());
                     });
             }
 

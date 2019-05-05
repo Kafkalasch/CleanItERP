@@ -21,9 +21,10 @@ namespace CleanItERP.Services
             return dtos;
         }
 
-        public IEnumerable<OrderDto> GetFinishedOrdersForBranch(int branchId){
+        public IEnumerable<OrderDto> GetCollectableOrdersForBranch(int branchId){
             var ordersFilteredByBranch = QueryOrdersWithIncludedNavigationProps()
-                            .Where(o => o.BranchId == branchId);
+                            .Where(o => o.BranchId == branchId)
+                            .Where(o => o.DateReturned == null);
             var cleanedDtos = ConvertToDtos(ordersFilteredByBranch)
                             .Where(o => o.Textiles.All(t => t.TextileState == DatabaseConstants.TextileState.FINISHED));
             

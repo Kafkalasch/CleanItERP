@@ -50,9 +50,9 @@ namespace CleanItERPTests.Controllers
             var service = Substitute.For<IListOrdersService>();
             var controller = new OrderController();
 
-            controller.GetFinishedOrdersForBranch(0, service);
+            controller.GetCollectableOrdersForBranch(0, service);
 
-            service.Received().GetFinishedOrdersForBranch(0);
+            service.Received().GetCollectableOrdersForBranch(0);
         }
 
         [Fact]
@@ -65,10 +65,10 @@ namespace CleanItERPTests.Controllers
             order.Textiles = new List<Textile>(){textile};
             var orderDto = order.ToDto(null);
             var initialOrders = new List<OrderDto>(){ orderDto };
-            service.GetFinishedOrdersForBranch(1).Returns(initialOrders);
+            service.GetCollectableOrdersForBranch(1).Returns(initialOrders);
             var controller = new OrderController();
 
-            var returnedOrders = controller.GetFinishedOrdersForBranch(1, service);
+            var returnedOrders = controller.GetCollectableOrdersForBranch(1, service);
 
             returnedOrders.Value.Should().Contain(orderDto);
         }

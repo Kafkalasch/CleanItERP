@@ -23,10 +23,10 @@ namespace CleanItERP.Controllers
             return service.GetOrdersForBranch(branchId).ToList();
         }
 
-        [HttpGet("FinishedOrdersForBranch/{branchId}")]
-        public ActionResult<IEnumerable<OrderDto>> GetFinishedOrdersForBranch(int branchId, [FromServices] IListOrdersService service)
+        [HttpGet("CollectableOrdersForBranch/{branchId}")]
+        public ActionResult<IEnumerable<OrderDto>> GetCollectableOrdersForBranch(int branchId, [FromServices] IListOrdersService service)
         {
-            return service.GetFinishedOrdersForBranch(branchId).ToList();
+            return service.GetCollectableOrdersForBranch(branchId).ToList();
         }
 
         [HttpPatch("CollectOrder/{orderId}")]

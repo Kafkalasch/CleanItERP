@@ -8,6 +8,6 @@ namespace CleanItERP.Services
     {
         IEnumerable<OrderDto> GetOrdersForBranch(int branchId);
 
-        IEnumerable<OrderDto> GetFinishedOrdersForBranch(int branchId);
+        IEnumerable<OrderDto> GetCollectableOrdersForBranch(int branchId);
     }
 }
