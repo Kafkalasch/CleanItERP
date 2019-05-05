@@ -14,8 +14,8 @@ namespace CleanItERP.Controllers
     [ApiController]
     public class BranchController : ControllerBase
     {
-        private IBranchListService Service { get; }
-        public BranchController(IBranchListService service)
+        private IListBranchesService Service { get; }
+        public BranchController(IListBranchesService service)
         {
             this.Service = service;
         }

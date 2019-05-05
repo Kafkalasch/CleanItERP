@@ -15,7 +15,7 @@ namespace CleanItERPTests.Controllers
         [Fact]
         public void GetAllBranchesCallsServicesGetBranches()
         {
-            var service = Substitute.For<IBranchListService>();
+            var service = Substitute.For<IListBranchesService>();
             var controller = new BranchController(service);
 
             controller.GetAllBranches();
@@ -26,7 +26,7 @@ namespace CleanItERPTests.Controllers
         [Fact]
         public void GetAllBranchesReturnsResultOfServicesGetBranches()
         {
-            var service = Substitute.For<IBranchListService>();
+            var service = Substitute.For<IListBranchesService>();
             var branch = EntityFactory.CreateBranch().ToDto();
             var branches = new List<BranchDto>(){ branch };
             service.GetBranches().Returns(branches);

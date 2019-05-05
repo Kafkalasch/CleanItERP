@@ -4,7 +4,7 @@ using CleanItERP.DTOs;
 
 namespace CleanItERP.Services
 {
-    public interface IBranchListService
+    public interface IListBranchesService
     {
         IEnumerable<BranchDto> GetBranches();
     }

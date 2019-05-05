@@ -5,10 +5,10 @@ using CleanItERP.DTOs;
 
 namespace CleanItERP.Services
 {
-    public class BranchListService : IBranchListService
+    public class ListBranchesService : IListBranchesService
     {
         private CleanItERPContext Context { get; }
-        public BranchListService(CleanItERPContext context)
+        public ListBranchesService(CleanItERPContext context)
         {
             this.Context = context;
         }

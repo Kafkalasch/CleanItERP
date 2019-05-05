@@ -14,8 +14,8 @@ namespace CleanItERP.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private IOrderListService OrderListService { get; }
-        public OrderController(IOrderListService orderListService)
+        private IListOrdersService OrderListService { get; }
+        public OrderController(IListOrdersService orderListService)
         {
             this.OrderListService = orderListService;
         }

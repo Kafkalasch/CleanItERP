@@ -4,7 +4,7 @@ using CleanItERP.DTOs;
 
 namespace CleanItERP.Services
 {
-    public interface IOrderListService
+    public interface IListOrdersService
     {
         IEnumerable<OrderDto> GetOrdersForBranch(int branchId);
 

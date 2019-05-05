@@ -37,8 +37,8 @@ namespace CleanItERP
                 options => options.UseSqlite("DataSource = sqliteDatabase.db")
             );
 
-            services.AddScoped<IOrderListService, OrderListService>();
-            services.AddScoped<IBranchListService, BranchListService>();
+            services.AddScoped<IListOrdersService, ListOrdersService>();
+            services.AddScoped<IListBranchesService, ListBranchesService>();
 
             if(Environment.IsDevelopment()){
                 services.AddCors(options =>

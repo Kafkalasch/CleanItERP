@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CleanItERP.Services
 {
-    public class OrderListService : IOrderListService
+    public class ListOrdersService : IListOrdersService
     {
         private CleanItERPContext Context { get; }
 
-        public OrderListService(CleanItERPContext context){
+        public ListOrdersService(CleanItERPContext context){
             this.Context = context;
         }
 

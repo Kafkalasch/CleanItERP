@@ -15,7 +15,7 @@ namespace CleanItERPTests.Controllers
         [Fact]
         public void GetOrdersCallsOrderListServiceCorrectly()
         {
-            var service = Substitute.For<IOrderListService>();
+            var service = Substitute.For<IListOrdersService>();
             var controller = new OrderController(service);
 
             controller.GetOrdersForBranch(0);
@@ -26,7 +26,7 @@ namespace CleanItERPTests.Controllers
         [Fact]
         public void GetOrdersReturnsResultOfOrderListService()
         {
-            var service = Substitute.For<IOrderListService>();
+            var service = Substitute.For<IListOrdersService>();
             var order = EntityFactory.CreateOrder();
             order.BranchId = 1;
             var textile = EntityFactory.CreateTextile();
@@ -44,7 +44,7 @@ namespace CleanItERPTests.Controllers
         [Fact]
         public void GetCleanOrdersCallsOrderListServiceCorrectly()
         {
-            var service = Substitute.For<IOrderListService>();
+            var service = Substitute.For<IListOrdersService>();
             var controller = new OrderController(service);
 
             controller.GetFinishedOrdersForBranch(0);
@@ -55,7 +55,7 @@ namespace CleanItERPTests.Controllers
         [Fact]
         public void GetCleanOrdersReturnsResultOfOrderListService()
         {
-            var service = Substitute.For<IOrderListService>();
+            var service = Substitute.For<IListOrdersService>();
             var order = EntityFactory.CreateOrder();
             order.BranchId = 1;
             var textile = EntityFactory.CreateTextile();

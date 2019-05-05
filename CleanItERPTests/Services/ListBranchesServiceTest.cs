@@ -5,14 +5,14 @@ using Xunit;
 
 namespace CleanItERPTests.Services
 {
-    public class BranchListServiceTest : ADbContextTest
+    public class ListBranchesServiceTest : ADbContextTest
     {
 
         [Fact]
         public void ReturnsEmptyListWhenDatabaseIsEmpty(){
             using (var context = CreateContext())
             {
-                var service = new BranchListService(context);
+                var service = new ListBranchesService(context);
                 var branches = service.GetBranches();
                 branches.Should().BeEmpty();
             }
@@ -37,7 +37,7 @@ namespace CleanItERPTests.Services
 
             using (var context = CreateContext())
             {   
-                var service = new BranchListService(context);
+                var service = new ListBranchesService(context);
                 var branches = service.GetBranches();
                 branches.Should().HaveCount(2);
                 branches.Should().Contain(b => b.Name == branch1Name);
