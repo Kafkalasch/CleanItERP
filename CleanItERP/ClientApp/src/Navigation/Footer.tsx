@@ -8,7 +8,7 @@ export class Footer extends React.Component{
     render(){
 
         return(
-            <Navbar>
+            <Navbar className="footer">
                 <NavbarGroup className="footer-group" align={Alignment.RIGHT}>
                     <div className={Classes.TEXT_MUTED}>created by Michael Höfler</div>
                 </NavbarGroup>

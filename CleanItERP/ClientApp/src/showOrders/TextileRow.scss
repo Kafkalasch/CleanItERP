@@ -8,9 +8,16 @@
     align-items: center;
     .textile-identifier {
         margin-left: 10px;
-        flex-basis: 20%;
+        flex-basis: 120px;
+        flex-grow: 1.5;
     }
     .textile-type{
-        flex-basis: 20%;
+        flex-basis: 120px;
+        flex-grow: 1;
     }
+    .textile-state-renderer{
+        flex-basis: 130px;
+        flex-grow: 1;
+    }
+
 }

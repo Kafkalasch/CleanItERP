@@ -1,11 +1,11 @@
-import { Button, Card, Elevation, Intent } from "@blueprintjs/core";
+import { Button, Card, Elevation, H5, Intent } from "@blueprintjs/core";
 import { IconNames } from "@blueprintjs/icons";
 import * as React from "react";
 import { collectOrder } from "src/api/dataCommunication";
 import { getFullName, Order } from "src/api/Models";
 import { TextileList } from "src/showOrders/TextileList";
 import { formatDate, isUndefinedOrNull } from "src/utils/utilities";
-
+import "./CollectOrderCard.scss";
 
 interface Props {
     order: Order,
@@ -22,10 +22,10 @@ export class CollectOrderCard extends React.Component<Props>{
         
 
         return(
-            <Card
+            <Card className="collect-order-card"
                 interactive={false}
                 elevation={Elevation.ONE}>
-                <h5>{order.identifier}</h5>
+                <H5>{order.identifier}</H5>
                 <ul>
                     <li>Customer: {getFullName(order.customer)}</li>
                     <li>Clerk: {getFullName(order.clerk)}</li>

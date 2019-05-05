@@ -3,6 +3,7 @@ import { Order } from "src/api/Models";
 import { PanelProps } from "src/Navigation/PanelFactory";
 import { CollectableOrderSelector } from "./CollectableOrderSelector";
 import { CollectOrderCard } from "./CollectOrderCard";
+import "./CollectOrdersPanel.scss";
 
 interface State {
     selectedOrder: Order,
@@ -20,7 +21,7 @@ export class CollectOrdersPanel extends React.Component<PanelProps, State>{
 
     public render(){
         return(
-            <div>
+            <div className="collect-orders-panel">
                 <CollectableOrderSelector 
                     branch={this.props.branch}
                     selectedOrder={this.state.selectedOrder}

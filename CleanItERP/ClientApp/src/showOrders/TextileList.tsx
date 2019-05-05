@@ -11,7 +11,7 @@ export class TextileList extends React.Component<Props>{
 
     public render(){
         return(
-            <div>
+            <div className="textile-list">
                 {this.props.textiles.map( 
                     textile =>
                         <TextileRow textile={textile} key={textile.id} />
